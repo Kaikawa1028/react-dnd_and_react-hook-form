@@ -27,7 +27,6 @@ const Items = ({ movie, position, moveCard }: MoviesType) => {
   const [, drop] = useDrop({
     accept: "CARD",
 
-    //useDragのitemフィールドで指定した項目が参照できる
     hover: (item: Record<string, any>) => {
       const dragIndex = item.index; //drag中のインデックス
       const hoverIndex = position; //hover対象のインデックス
@@ -43,7 +42,7 @@ const Items = ({ movie, position, moveCard }: MoviesType) => {
   const [{ isDragging }, drag, preview] = useDrag(
     () => ({
       type: "CARD",
-      item: { index: position, id: movie.id, type: "CARD" },
+      item: { index: position, id: movie.id },
       collect: (monitor) => {
         return {
           isDragging: monitor.isDragging()
